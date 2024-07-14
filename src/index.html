@@ -5,15 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WFA</title>
     <link rel="stylesheet" href="./output.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body>
-    <h1 class="underline  font-bold text-center">Hello world!</h1>
-    <h1 class="underline  font-bold text-center">Hello world!</h1>
-    <input id="city-input" type="text" placeholder="Enter city name"
-    class="p-3 border rounded-lg bg-indigo-500 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300 text-lg">
-<!-- Button to trigger the search for weather data -->
-<button id="search-button"
-    class="mt-4 p-4 bg-indigo-500 text-white rounded-lg w-full hover:bg-indigo-700 transition duration-300 transform hover:scale-105 text-lg">🔍
-    Search</button>
+<body> 
+    <header>
+    <h1 class="text-3xl flex justify-center font-bold  bg-black text-sky-500 py-2"> Weather Forecast App</h1>
+    </header>
+
+    <main>
+
+    <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-screen flex justify-center items-center">
+   
+     <div class="container max-w-3xl text-cyan-50 rounded-2xl shadow-red-50 bg-slate-700">
+
+     <div class="show-weather grid grid-cols-2 gap-1">
+
+     <div class="bg-[url('/backgrd.jpg')] bg-cover rounded-2xl bg-no-repeat">
+
+     <div class="info h-full p-9 my-20 text-center">
+
+     <h2 class="text-5xl p-2">Sunday</h2>
+
+     <span class="date p-2">1 april 1992</span>
+                    
+     <div class="icons">
+                        
+     <img src="" class="w-96 object-cover my-auto">
+                        
+     <h2 class="text-5xl font-bold p-2">22C</h2>
+                       
+     <h3 class="p-2">Overcast Clouds</h3>
+                   
+     </div>
+               
+    </div>
+    
+    </div>
+           
+    <div class="content px-3 py-2">
+           
+    <form class="my-1">
+     
+     <h3 class="my-2 text-2xl font-bold">Enter a City Name</h2>         
+     <input class="min-w-full h-7 font-bold text-sky-800 p-3 rounded-md" type="text" placeholder="Search City">
+     <button type="submit" class="btn min-w-full text-black font-semibold h-7 my-2 hover:bg-green-500 border bg-cyan-500 border-cyan-500 shadow-inner">Search</button>
+           
+    </form>
+           
+     <div class="day-info text-black font-semibold shadow-2xl bg-sky-400 p-1 rounded-md">
+                
+     <div class="content flex justify-between">
+     <p class="title">Name:</p>
+     <span class="value">United Kingdoom</span>
+     </div>
+               
+     <div class="content flex justify-between ">
+     <p class="title">Temp:</p>
+     <span class="value">23C</span>
+     </div>
+                
+     <div class="content flex justify-between ">
+     <p class="title">Humidity:</p>
+     <span class="value">2%</span>
+     </div>
+
+    <div class="content flex justify-between">
+    <p class="title">Wind Speed:</p>
+    <span class="value">2.92 Km/h</span>
+    </div>
+
+    </div>
+            
+    <div class="list-content">
+        <h2 class="m-2 font-semibold">5-Day Forecast</h2>
+        <ul class="weather-cards flex flex-wrap gap-4">
+          <li class="card p-2 text-xs bg-black rounded-md leading-6">
+            <h3>( ______ )</h3>
+            <h6>Temp: __C</h6>
+            <h6>Wind: __ M/S</h6>
+            <h6>Humidity: __%</h6>
+          </li>
+          <li class="card p-2 text-xs bg-black rounded-md leading-6">
+            <h3>( ______ )</h3>
+            <h6>Temp: __C</h6>
+            <h6>Wind: __ M/S</h6>
+            <h6>Humidity: __%</h6>
+          </li>
+          <li class="card p-2 text-xs bg-black rounded-md leading-6">
+            <h3>( ______ )</h3>
+            <h6>Temp: __C</h6>
+            <h6>Wind: __ M/S</h6>
+            <h6>Humidity: __%</h6>
+          </li>
+          <li class="card p-2 text-xs bg-black rounded-md leading-6">
+            <h3>( ______ )</h3>
+            <h6>Temp: __C</h6>
+            <h6>Wind: __ M/S</h6>
+            <h6>Humidity: __%</h6>
+          </li>
+          <li class="card p-2 text-xs bg-black rounded-md leading-6">
+            <h3>( ______ )</h3>
+            <h6>Temp: __C</h6>
+            <h6>Wind: __ M/S</h6>
+            <h6>Humidity: __%</h6>
+          </li>
+          </ul>
+    
+           
+  </div>
+  </div>
+  </div>
+
+   </div>
+   </div>
+    
+</main>
+
+<script src="logic.js"></script>
 </body>
 </html>
+
