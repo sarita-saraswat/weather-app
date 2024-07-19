@@ -9,17 +9,10 @@ const inputBox = document.querySelector('.inputbox');
 const icons = document.querySelector('.icons');
 const dayInfo = document.querySelector(".day-info");
 const weatherCards = document.querySelector('.weather-cards')
+const currentLocationBtn = document.getElementById('current-location-btn');
+const cityDropdown = document.getElementById('city-dropdown');
 
-
-const days = [ "Sunday",
-               "Monday",
-               "Tuesday",
-               "Wednesday",
-               "Thursday",
-               "Friday",
-               "Saturday",
-                
-];
+const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
 
@@ -38,6 +31,10 @@ dates.textContent = date +" " +month +" "+year;
 
 
 
+
+
+
+
 btn.addEventListener("click",(e)=>{
     e.preventDefault();
     // check a input box empty
@@ -50,6 +47,26 @@ btn.addEventListener("click",(e)=>{
         console.log("Please Enter City or Country Name");
     }
 });
+
+
+
+// fetch current location button 
+
+currentLocationBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+         findLocationByCoords(lat, lon);
+        }, (error) => {
+            console.error("Error getting the current location: ", error);
+        });
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+});
+
 
 
 
@@ -69,10 +86,10 @@ try{
     const content = displayIconTemp(result);
     const showCurrentData = currentData(result);
     displayForecast(result.coord.lat,result.coord.lon);
-    setTimeout(()=>{
+
     icons.insertAdjacentHTML("afterbegin",content);             
     dayInfo.insertAdjacentHTML("afterbegin",showCurrentData);             
-    },1500);
+
     }else{
       const message =  `<h2 class="tem text-5xl font-bold p-5 my-8">${result.cod}</h2>
        
@@ -83,6 +100,38 @@ try{
     alert("An error occurred while fetching the weather forecast!");
 }
 }
+
+// function to show current location weather
+
+async function findLocationByCoords(lat, lon) {
+    icons.innerHTML = "";
+    dayInfo.innerHTML = "";
+    weatherCards.innerHTML = "";
+
+    try {
+        const URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API}`;
+        const data = await fetch(URL);
+        const result = await data.json();
+        
+        if (result.cod !== "404") {
+            const content = displayIconTemp(result);
+            const showCurrentData = currentData(result);
+            displayForecast(lat, lon);
+        
+         icons.insertAdjacentHTML("afterbegin", content);             
+         dayInfo.insertAdjacentHTML("afterbegin", showCurrentData);             
+    
+        } else {
+            const message = `<h2 class="tem text-5xl font-bold p-5 my-8">${result.cod}</h2>
+                             <h3 class="cloud m-2 font-bold">${result.message}</h3>`;
+            icons.insertAdjacentHTML("afterbegin", message);              
+        }
+    } catch (error) {
+        alert("An error occurred while fetching the weather forecast!");
+    }
+}
+
+
 
 
 
@@ -122,40 +171,48 @@ function currentData(result){
 }
 
  async function displayForecast(lat,long){
-    const ForeCast_API = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${API}`;
+    const ForeCast_API = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${API} `;
     const data = await fetch(ForeCast_API);
     const result = await data.json();
-   console.log(result);
+    const today = new Date();
+
 
     // 5 days data cards
     const foreCastDays = [];
      const foreCastDayData = result.list.filter((forecast)=>{
-     const forecastDate = new Date(forecast.dt_txt).getDate();
-     if(!foreCastDays.includes(forecastDate)) {
-                 return foreCastDays.push(forecastDate);
-    }
+     const forecastDate = new Date(forecast.dt_txt);
+     console.log(forecastDate);
+     
+    
+     if (forecastDate > today && foreCastDays.length < 5 && !foreCastDays.includes(forecastDate.getDate())) {
+     
+                foreCastDays.push(forecastDate.getDate());
+                return true;
+                
+    } 
+    return false;
    
-    }); 
+    }).sort((a, b) => new Date(a.dt_txt) - new Date(b.dt_txt)); 
       console.log(foreCastDayData);
       
-      foreCastDayData.forEach((content,indx)=>{
-        if(indx<=4){
-            weatherCards.insertAdjacentHTML("afterbegin",foreCast(content))
-        }
+      foreCastDayData.forEach(content => {
+     
+            weatherCards.insertAdjacentHTML("beforeend",foreCast(content));
+     
       });
  }
  function foreCast(forContent){
     const day = new Date(forContent.dt_txt);
     let month = day.toLocaleString("default", {month:"long"});
-    let date = day.getDate();
+    let date = day.getDate()+1;
     let year = day.getFullYear();
     let dateData = date +" " +month +" "+year;
 
-    return `  <li class="card p-2 text-xs bg-black rounded-md leading-6">
+    return `  <li class="card p-2 text-xs bg-black hover:bg-slate-200 border rounded-md leading-6">
               <h3>${dateData}</h3>
               <img src=" https://openweathermap.org/img/wn/${forContent.weather[0].icon}@2x.png">
-              <h6>Temp:${Math.round(forContent.main.temp-275.15)}°C</h6>
-              <h6>Wind: ${forContent.wind.speed}M/S</h6>
-              <h6>Humidity: ${forContent.main.humidity}%</h6>
+              <h6>Temp:  ${Math.round(forContent.main.temp-275.15)}°C</h6>
+              <h6>Wind:  ${forContent.wind.speed}M/S</h6>
+              <h6>Humidity:  ${forContent.main.humidity}%</h6>
               </li>`;
  }

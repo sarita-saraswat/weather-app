@@ -7,23 +7,22 @@
     <link rel="stylesheet" href="./output.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body> 
+<body>
+    
     <header>
-    <h1 class="text-3xl flex justify-center font-bold  bg-black text-sky-500 py-2"> Weather Forecast App</h1>
+    <h1 class="text-3xl flex text-sky-500 justify-center font-bold  bg-black py-2"> Weather Forecast App</h1>
     </header>
 
     <main>
 
-    <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-screen flex justify-center items-center">
+    <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-screen sm:flex-none flex justify-center items-center">
    
-     <div class="container bg-[url('/backgrd.jpg')] bg-cover flex bg-no-repeat max-w-3xl text-cyan-50 rounded-2xl shadow-black">
-
+     <div class="container  sm:flex-none sm:text-xs w- flex bg-[url('/backgrd.jpg')] bg-cover bg-no-repeat text-cyan-50 rounded-2xl">
+    
      <div class="imag">
 
-     <div class="info  p-6 my-8 text-center">
-
-     <h2 class="day text-5xl font-bold p-2">Sunday</h2>
-
+     <div class="info  p-7 m-4 text-center">
+     <h2 class="day text-5xl font-bold p-2">Sunday</h2> 
      <span class="date p-2 font-bold">1 april 1992</span>
                     
      <div class="icons">
@@ -40,14 +39,14 @@
     
     </div>
            
-    <div class="content px-2 py-2">
+    <div class="content p-5">
            
-    <form class="my-1">
+    <form>
      
      <h3 class="my-2 text-2xl font-bold">Enter a City Name</h2>         
      <input class=" inputbox min-w-full h-7 font-bold text-sky-800 p-3 rounded-md" type="text" placeholder="Search City">
-     <button type="submit" class="btn min-w-full text-black font-semibold h-7 my-2 hover:bg-green-500 border bg-cyan-500 border-cyan-500 shadow-inner">Search</button>
-           
+     <button type="submit" class="btn text-black min-w-full font-semibold h-7 my-2 hover:bg-green-500 border bg-sky-300 border-cyan-500 shadow-inner">Search</button>
+     <button type="submit" id="current-location-btn" class="my-2 h-7 border min-w-full font-semibold text-black bg-sky-300">Current Location</button>    
     </form>
            
      <div class="day-info text-black font-semibold shadow-2xl bg-sky-400 p-1 rounded-md">
@@ -73,39 +72,46 @@
     </div>
 
     </div>
-            
-    <div class="list-content">
-        <h2 class="m-2 text-xl font-bold">5-Day Forecast</h2>
-        <ul class="weather-cards flex gap-1">
-          <li class="card p-2 text-xs bg-black rounded-md leading-6">
+    <form>
+    <label class=" my-2 font-semibold" for="city">Recent searched city:</label>
+
+<select id="city-dropdown" class="my-2 p-1 min-w-full bg-slate-400 text-black " name="city" id="city">
+<option value="">Select a city</option>
+</select>
+</form>
+      </div>     
+    <div class="list-content p-7">
+        <h2 class="text-xl m-6 font-bold text-center">5-Day Forecast</h2>
+        <ul class="weather-cards flex  gap-1">
+          <li class="card p-2 border hover:bg-cyan-200 text-xs bg-black rounded-md leading-6">
             <h3>( ______ )</h3>
             <img src=" https://openweathermap.org/img/wn/10d@2x.png">
             <h6>Temp: __C</h6>
             <h6>Wind: __ M/S</h6>
             <h6>Humidity: __%</h6>
           </li>
-          <li class="card p-2 text-xs bg-black rounded-md leading-6">
+          <li class="card p-2 text-xs bg-black border rounded-md leading-6">
             <h3>( ______ )</h3>
             <img src=" https://openweathermap.org/img/wn/10d@2x.png" alt="">
             <h6>Temp: __C</h6>
             <h6>Wind: __ M/S</h6>
             <h6>Humidity: __%</h6>
           </li>
-          <li class="card p-2 text-xs bg-black rounded-md leading-6">
+          <li class="card p-2 text-xs bg-black border rounded-md leading-6">
             <h3>( ______ )</h3>
             <img src=" https://openweathermap.org/img/wn/10d@2x.png">
             <h6>Temp: __C</h6>
             <h6>Wind: __ M/S</h6>
             <h6>Humidity: __%</h6>
           </li>
-          <li class="card p-2 text-xs bg-black rounded-md leading-6">
+          <li class="card p-2 text-xs bg-black border rounded-md leading-6">
             <h3>( ______ )</h3>
             <img src=" https://openweathermap.org/img/wn/10d@2x.png">
             <h6>Temp: __C</h6>
             <h6>Wind: __ M/S</h6>
             <h6>Humidity: __%</h6>
           </li>
-          <li class="card p-2 text-xs bg-black rounded-md leading-6">
+          <li class="card p-2 text-xs bg-black border rounded-md leading-6">
             <h3>( ______ )</h3>
             <img src=" https://openweathermap.org/img/wn/10d@2x.png">
             <h6>Temp: __C</h6>
