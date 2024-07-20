@@ -31,6 +31,10 @@ dates.textContent = date +" " +month +" "+year;
 
 
 
+// Load cities from local storage and populate the drop-down
+document.addEventListener('DOMContentLoaded', () => {
+    loadCitiesFromLocalStorage();
+});
 
 
 
@@ -38,13 +42,13 @@ dates.textContent = date +" " +month +" "+year;
 btn.addEventListener("click",(e)=>{
     e.preventDefault();
     // check a input box empty
-    if(inputBox !== ""){
-        const search = inputBox.value;
+    const search = inputBox.value.trim();
+    if(search === ''){
+        alert("Please Enter a City Name.");
+    } else {
         inputBox.value = '';
+        saveCityToLocalStorage(search);
         findLocation(search);
-    }
-    else {
-        console.log("Please Enter City or Country Name");
     }
 });
 
@@ -60,7 +64,7 @@ currentLocationBtn.addEventListener("click", (e) => {
         const lon = position.coords.longitude;
          findLocationByCoords(lat, lon);
         }, (error) => {
-            console.error("Error getting the current location: ", error);
+            alert("Error getting the current location: ", error);
         });
     } else {
         alert("Geolocation is not supported by this browser.");
@@ -68,6 +72,34 @@ currentLocationBtn.addEventListener("click", (e) => {
 });
 
 
+
+cityDropdown.addEventListener("change", (e) => {
+    const city = e.target.value;
+    if (city) {
+        findLocation(city);
+    }
+});
+
+
+function saveCityToLocalStorage(city) {
+    let cities = JSON.parse(localStorage.getItem('cities')) || [];
+    if (!cities.includes(city)) {
+        cities.push(city);
+        localStorage.setItem('cities', JSON.stringify(cities));
+        loadCitiesFromLocalStorage();
+    }
+}
+
+function loadCitiesFromLocalStorage() {
+    const cities = JSON.parse(localStorage.getItem('cities')) || [];
+    cityDropdown.innerHTML = `<option value="">Select a city</option>`;
+    cities.forEach(city => {
+        const option = document.createElement('option');
+        option.value = city;
+        option.textContent = city;
+        cityDropdown.appendChild(option);
+    });
+}
 
 
  async function findLocation(name){
@@ -77,7 +109,7 @@ currentLocationBtn.addEventListener("click", (e) => {
 
 try{
 
-    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${API}`;
+    const URL = `https://api.openweathermap.org/datagit/2.5/weather?q=${name}&appid=${API}`;
     const data = await fetch(URL);
     const result = await data.json();
     console.log(result);
