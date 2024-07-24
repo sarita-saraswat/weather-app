@@ -1,15 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./WFA/src/.{index.html,script.js}"],
+  content: 
+    ['./src/**/*.{html,js}'], // Include all HTML and JS files in the src directory
+  
   theme: {
     extend: {},
     screens: {
-      'sm': '370px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
+      'sm': '375px', // iPhone SE
+      'md': '768px', // iPad Mini
+      'lg': '1024px', // Desktop
+      
     },
-
   },
   plugins: [],
 }

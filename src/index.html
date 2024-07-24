@@ -3,47 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WFA</title>
+    <title>Weather Forecast Application</title>
     <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="./input.css">
+    <link rel="icon" href="./WFA/favicon.jpg">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
+
 <body>
     
-    <header>
-    <h1 class="text-3xl flex text-sky-500 justify-center font-bold  bg-black py-2"> Weather Forecast App</h1>
-    </header>
+  <header>
+  <h1 class="text-3xl flex text-sky-300 justify-center font-bold  bg-black py-2"> Weather Forecast App</h1>
+  </header>
 
-    <main>
+  <main>
 
-    <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-screen sm:flex-none flex justify-center items-center">
-   
-     <div class="container  sm:flex-none sm:text-xs w- flex bg-[url('/backgrd.jpg')] bg-cover bg-no-repeat text-cyan-50 rounded-2xl">
+   <div class="sm:h-auto sm:p-0.5 bg-gradient-to-r from-purple-500 to-pink-500 h-screen flex justify-center items-center">
+   <div class="container lg:w-auto lg:flex lg:flex-nowrap sm:h-auto lg-w-auto md:flex md:flex-nowrap mx-5 rounded-xl bg-[url('/backgrd.jpg')] bg-cover sm:text-xs sm:flex-wrap sm:m-16 bg-no-repeat text-slate-50">
+ 
+ 
+  <section>
     
-     <div class="imag">
-
-     <div class="info  p-7 m-4 text-center">
-     <h2 class="day text-5xl font-bold p-2">Sunday</h2> 
-     <span class="date p-2 font-bold">1 april 1992</span>
+    <div class="info  lg:p-7 lg:m-2 sm:p-1 sm:m-4 text-center">
+    <h2 class="day sm:m-0  lg:text-5xl sm:text-sm sm:p-0.5 font-bold lg:p-2">Sunday</h2> 
+    <span class="date lg:p-2 lg:text-sm sm:sm sm:p-0.5 font-bold">1 april 1992</span>
                     
-     <div class="icons">
+    <div class="icons sm:p-0.5 sm:m-0.5">
+    <img src=" https://openweathermap.org/img/wn/10d@2x.png" class="m-6 p-6" alt="">
                         
-     <img src=" https://openweathermap.org/img/wn/10d@2x.png" class="m-6 p-6" alt="">
-                        
-     <h2 class="tem text-5xl font-bold p-2">25°C</h2>
-                       
-     <h3 class="cloud  m-2 font-bold">Overcast Clouds</h3>
+    <h2 class="tem lg:text-5xl sm:text-xl font-bold lg:p-2">25°C</h2>
+    <h3 class="cloud  lg:m-2 sm:m-0.5 font-bold">Overcast Clouds</h3>
                    
-     </div>
+    </div>
                
     </div>
     
-    </div>
+  </section>
+
+  <section>
            
-    <div class="content p-5">
+    <div class="content lg:text-sm lg:my-6 sm:m-4 md:p-0 md:m-0">
            
     <form>
      
-     <h3 class="my-2 text-2xl font-bold">Enter a City Name</h2>         
+     <h3 class="my-2 lg:text-2xl sm:text-sm md:text-xl font-bold">Enter a City Name</h2>         
      <input class=" inputbox min-w-full h-7 font-bold text-sky-800 p-3 rounded-md" type="text" placeholder="Search City">
      <button type="submit" class="btn text-black min-w-full font-semibold h-7 my-2 hover:bg-green-500 border bg-sky-300 border-cyan-500 shadow-inner">Search</button>
      <button type="submit" id="current-location-btn" class="my-2 h-7 border min-w-full font-semibold text-black bg-sky-300">Current Location</button>    
@@ -75,53 +79,68 @@
     <form>
     <label class=" my-2 font-semibold" for="city">Recent searched city:</label>
 
-<select id="city-dropdown" class="my-2 p-1 min-w-full bg-slate-400 text-black " name="city" id="city">
-<option value="">Select a city</option>
-</select>
-</form>
-      </div>     
-    <div class="list-content p-7">
-        <h2 class="text-xl m-6 font-bold text-center">5-Day Forecast</h2>
-        <ul class="weather-cards flex  gap-1">
-          <li class="card p-2 border hover:bg-cyan-200 text-xs bg-black rounded-md leading-6">
-            <h3>( ______ )</h3>
-            <img src=" https://openweathermap.org/img/wn/10d@2x.png">
-            <h6>Temp: __C</h6>
-            <h6>Wind: __ M/S</h6>
-            <h6>Humidity: __%</h6>
-          </li>
-          <li class="card p-2 text-xs bg-black border rounded-md leading-6">
-            <h3>( ______ )</h3>
-            <img src=" https://openweathermap.org/img/wn/10d@2x.png" alt="">
-            <h6>Temp: __C</h6>
-            <h6>Wind: __ M/S</h6>
-            <h6>Humidity: __%</h6>
-          </li>
-          <li class="card p-2 text-xs bg-black border rounded-md leading-6">
-            <h3>( ______ )</h3>
-            <img src=" https://openweathermap.org/img/wn/10d@2x.png">
-            <h6>Temp: __C</h6>
-            <h6>Wind: __ M/S</h6>
-            <h6>Humidity: __%</h6>
-          </li>
-          <li class="card p-2 text-xs bg-black border rounded-md leading-6">
-            <h3>( ______ )</h3>
-            <img src=" https://openweathermap.org/img/wn/10d@2x.png">
-            <h6>Temp: __C</h6>
-            <h6>Wind: __ M/S</h6>
-            <h6>Humidity: __%</h6>
-          </li>
-          <li class="card p-2 text-xs bg-black border rounded-md leading-6">
-            <h3>( ______ )</h3>
-            <img src=" https://openweathermap.org/img/wn/10d@2x.png">
-            <h6>Temp: __C</h6>
-            <h6>Wind: __ M/S</h6>
-            <h6>Humidity: __%</h6>
-          </li>
-          </ul>
+   <select id="city-dropdown" class="my-2 p-1 min-w-full bg-slate-400 text-black " name="city" id="city">
+   <option value="">Select a city</option>
+   </select>
+   </form>
+     
+   </div>  
+      
+  </section>
+
+
+  <section>
+
+   <div class="list-content font-semibold lg:p-7 sm:p-1">
+   <h2 class="lg:text-xl lg:m-6 sm:m-2 font-bold text-center">5-Day Forecast</h2>
+   <ul class="weather-cards lg:flex sm:flex gap-1 md:ml-1">
+      
+    <li class="card p-2 border text-xs bg-black rounded-md leading-6">
+       <h3>( ______ )</h3>
+       <img src=" https://openweathermap.org/img/wn/10d@2x.png">
+       <h6>Temp: __C</h6>
+       <h6>Wind: __ M/S</h6> 
+       <h6>Humidity: __%</h6>
+      </li>
+         
+     <li class="card p-2 text-xs bg-black border rounded-md leading-6">
+       <h3>( ______ )</h3>
+      <img src=" https://openweathermap.org/img/wn/10d@2x.png" alt="">
+      <h6>Temp: __C</h6>
+      <h6>Wind: __ M/S</h6>
+      <h6>Humidity: __%</h6>
+     </li>
+
+     <li class="card p-2 text-xs bg-black border rounded-md leading-6">
+       <h3>( ______ )</h3>
+       <img src=" https://openweathermap.org/img/wn/10d@2x.png">
+       <h6>Temp: __C</h6>
+       <h6>Wind: __ M/S</h6>
+       <h6>Humidity: __%</h6>
+     </li>
+
+     <li class="card p-2 text-xs bg-black border rounded-md leading-6">
+       <h3>( ______ )</h3>
+       <img src=" https://openweathermap.org/img/wn/10d@2x.png">
+       <h6>Temp: __C</h6>
+       <h6>Wind: __ M/S</h6>
+       <h6>Humidity: __%</h6>
+      </li>
+
+     <li class="card p-2 text-xs bg-black border rounded-md leading-6">
+        <h3>( ______ )</h3>
+        <img src=" https://openweathermap.org/img/wn/10d@2x.png">
+        <h6>Temp: __C</h6>
+        <h6>Wind: __ M/S</h6>
+        <h6>Humidity: __%</h6>
+     </li>
+          
+   </ul>
     
            
   </div>
+  </section>
+
   </div>
 
 
@@ -129,6 +148,21 @@
    </div>
     
 </main>
+
+<footer>
+    <div class="footer bg-black flex text-white justify-center">
+    <div class="copy lg:mt-2 lg:mr-96 lg:pr-44 lg:text-xs sm:text-xs sm:ml-2 md:mr-4 md:pr-5 sm:mr-3 sm:pr-2">
+    <h6> ©Copyright 2024,Inc. or its affiliates</h6>
+    <h6>Weather Forecast Application</h6>
+    </div>
+    <div class="contact-icon lg:text-3xl md:items-center md:text-xl flex m-1 ml-10 transition-all ease-in">
+     <a href="#"><i class="bx bxl-facebook ml-3 font-medium transition-all ease-in text-purple-500 hover:text-lime-500 hover:text-4xl"></i></a>
+     <a href="#"><i class="bx bxl-twitter ml-3 font-medium transition-all ease-in text-purple-500 hover:text-lime-500 hover:text-4xl"></i></a>
+     <a href="#"><i class="bx bxl-gmail ml-3 font-medium transition-all ease-in text-purple-500 hover:text-lime-500 hover:text-4xl"></i></a>
+     <a href="#"><i class="bx bxl-whatsapp ml-3 font-medium transition-all ease-in text-purple-500 hover:text-lime-500 hover:text-4xl"></i></a>
+    </div>
+    </div>
+</footer>
 
 <script src="script.js"></script>
 </body>

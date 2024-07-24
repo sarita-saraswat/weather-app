@@ -109,7 +109,7 @@ function loadCitiesFromLocalStorage() {
 
 try{
 
-    const URL = `https://api.openweathermap.org/datagit/2.5/weather?q=${name}&appid=${API}`;
+    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${API}`;
     const data = await fetch(URL);
     const result = await data.json();
     console.log(result);
@@ -236,11 +236,11 @@ function currentData(result){
  function foreCast(forContent){
     const day = new Date(forContent.dt_txt);
     let month = day.toLocaleString("default", {month:"long"});
-    let date = day.getDate()+1;
+    let date = day.getDate() + 1;
     let year = day.getFullYear();
     let dateData = date +" " +month +" "+year;
 
-    return `  <li class="card p-2 text-xs bg-black hover:bg-slate-200 border rounded-md leading-6">
+    return `  <li class="card p-1 text-xs bg-black border rounded-md leading-6">
               <h3>${dateData}</h3>
               <img src=" https://openweathermap.org/img/wn/${forContent.weather[0].icon}@2x.png">
               <h6>Temp:  ${Math.round(forContent.main.temp-275.15)}°C</h6>
