@@ -578,6 +578,12 @@ video {
   }
 }
 
+@media (min-width: 1100px){
+  .container{
+    max-width: 1100px;
+  }
+}
+
 .m-1{
   margin: 0.25rem;
 }
@@ -605,12 +611,21 @@ video {
   margin-bottom: 2rem;
 }
 
+.my-3{
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .ml-10{
   margin-left: 2.5rem;
 }
 
 .ml-3{
   margin-left: 0.75rem;
+}
+
+.mt-3{
+  margin-top: 0.75rem;
 }
 
 .flex{
@@ -923,15 +938,19 @@ video {
     font-size: 0.75rem;
     line-height: 1rem;
   }
+
+  .sm\:font-bold{
+    font-weight: 700;
+  }
+
+  .sm\:font-semibold{
+    font-weight: 600;
+  }
 }
 
 @media (min-width: 768px){
   .md\:m-0{
     margin: 0px;
-  }
-
-  .md\:m-2{
-    margin: 0.5rem;
   }
 
   .md\:ml-1{
@@ -994,8 +1013,20 @@ video {
     display: flex;
   }
 
+  .lg\:h-auto{
+    height: auto;
+  }
+
   .lg\:w-auto{
     width: auto;
+  }
+
+  .lg\:max-w-5xl{
+    max-width: 64rem;
+  }
+
+  .lg\:max-w-6xl{
+    max-width: 72rem;
   }
 
   .lg\:flex-nowrap{
@@ -1042,5 +1073,32 @@ video {
   .lg\:text-xs{
     font-size: 0.75rem;
     line-height: 1rem;
+  }
+}
+
+@media (min-width: 1100px){
+  .xl\:max-w-5xl{
+    max-width: 64rem;
+  }
+
+  .xl\:max-w-5{
+    max-width: 1.25rem;
+  }
+
+  .xl\:max-w-6xl{
+    max-width: 72rem;
+  }
+
+  .xl\:p-6{
+    padding: 1.5rem;
+  }
+
+  .xl\:p-5{
+    padding: 1.25rem;
+  }
+
+  .xl\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }

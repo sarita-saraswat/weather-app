@@ -9,6 +9,7 @@ module.exports = {
       'sm': '375px', // iPhone SE
       'md': '768px', // iPad Mini
       'lg': '1024px', // Desktop
+      'xl': '1100px', // large screen
       
     },
   },
